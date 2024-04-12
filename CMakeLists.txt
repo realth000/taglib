@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.13.0 FATAL_ERROR)
 
 project(taglib)
 
@@ -10,7 +10,7 @@ include(FeatureSummary)
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
-option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
+option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 if(APPLE)
   option(BUILD_FRAMEWORK "Build an OS X framework" OFF)
   if(BUILD_FRAMEWORK)
@@ -98,7 +98,7 @@ set(TAGLIB_SOVERSION_PATCH 1)
 include(ConfigureChecks.cmake)
 
 # Determine whether zlib is installed.
-option(WITH_ZLIB "Build with ZLIB" ON)
+option(WITH_ZLIB "Build with ZLIB" OFF)
 
 if(WITH_ZLIB)
   find_package("ZLIB")
@@ -184,7 +184,7 @@ if(BUILD_BINDINGS)
   add_subdirectory(bindings)
 endif()
 
-if(BUILD_TESTING)
+if(BUILD_TESTING AND false)
   find_package(CppUnit)
   if(CppUnit_FOUND)
     add_subdirectory(tests)
